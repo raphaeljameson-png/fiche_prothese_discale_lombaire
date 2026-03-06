@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Fiche d'information patient — Prothèse discale lombaire</title>
+<style>
+  :root {
+    --ink:#111;
+    --muted:#444;
+    --accent:#0b6fa4;      /* bleu */
+    --accent2:#22b8b8;     /* turquoise */
+    --bg:#fff;
+    --border:#d9d9d9;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #f3f5f7;
+    color: var(--ink);
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,Helvetica,sans-serif;
+    line-height: 1.35;
+  }
+  .toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: rgba(255,255,255,.92);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(6px);
+  }
+  .toolbar-inner {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 10px 16px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .toolbar .btn {
+    appearance: none;
+    border: 1px solid var(--border);
+    background: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .toolbar .btn.primary {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: #fff;
+  }
+  .wrap {
+    max-width: 980px;
+    margin: 22px auto;
+    padding: 0 16px 28px;
+  }
+  .page {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 26px 34px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.06);
+  }
+  header.top {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 16px;
+    align-items: center;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--accent);
+  }
+  header.top img {
+    width: 110px;
+    height: auto;
+  }
+  .brand h1 {
+    margin: 0;
+    font-size: 18px;
+    letter-spacing: .2px;
+    text-transform: uppercase;
+  }
+  .brand .line {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 2px;
+  }
+  .doc-title {
+    margin-top: 18px;
+    border-left: 6px solid var(--accent2);
+    padding-left: 14px;
+  }
+  .doc-title h2 {
+    margin: 0;
+    font-size: 22px;
+  }
+  .doc-title .meta {
+    margin-top: 6px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  h3 {
+    margin: 22px 0 8px;
+    font-size: 16px;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+  h4 {
+    margin: 14px 0 6px;
+    font-size: 14px;
+    color: var(--ink);
+  }
+  p { margin: 8px 0; }
+  ul { margin: 8px 0 8px 18px; }
+  li { margin: 4px 0; }
+
+  .note {
+    border: 1px solid var(--border);
+    border-left: 6px solid var(--accent2);
+    padding: 10px 12px;
+    border-radius: 8px;
+    background: #fbfeff;
+    margin: 12px 0;
+  }
+  .warn {
+    border-left-color: #d93025;
+    background: #fff9f8;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0 14px;
+    font-size: 13px;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    padding: 8px 10px;
+    vertical-align: top;
+  }
+  th {
+    background: #f6f8fa;
+    text-align: left;
+  }
+
+  .hr {
+    margin: 18px 0;
+    height: 1px;
+    background: var(--border);
+    border: 0;
+  }
+
+  footer {
+    margin-top: 18px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  /* Print */
+  @media print {
+    body { background: white; }
+    .toolbar { display: none; }
+    .wrap { margin: 0; padding: 0; }
+    .page {
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      padding: 14mm 14mm;
+    }
+    a { color: inherit; text-decoration: none; }
+    @page { size: A4; margin: 12mm; }
+  }
+
+
+/* Print layout improvements */
+@media print {
+  .no-print, .no-print * { display: none !important; }
+}
+@page { margin: 12mm; }
+</style>
+</head>
+<body>
+<div class="toolbar">
+<div class="toolbar-inner">
+<div style="font-weight:700;">Fiche Prothèse discale lombaire</div>
+<button class="btn primary" onclick="window.print()">Imprimer / Sauvegarder PDF</button>
+</div>
+</div>
+<div class="wrap">
+<div class="page">
+<header class="top">
+<img alt="Logo Espace Francilien du Rachis" src="logo.png"/>
+<div class="brand">
+<h1>ESPACE FRANCILIEN DU RACHIS</h1>
+<div class="line">95, rue de Prony — 75017 Paris | rachis.paris</div>
+<div class="line">Dr Raphaël Jameson · Dr Mayalen Lamerain · Dr Christophe Travert</div>
+</div>
+</header>
+<div class="doc-title">
+<h2>FICHE D'INFORMATION PATIENT — Prothèse discale lombaire</h2>
+<div class="meta">
+<div><strong>Document remis le :</strong> </div>
+<div><strong>Patient(e) :</strong> </div>
+</div>
+</div>
+<div class="note">
+        Cette fiche d'information a été conçue pour vous fournir un support complet à l'information orale délivrée par votre chirurgien au cours des consultations.
+        Elle ne se substitue pas à l'entretien direct avec votre médecin, qui reste le seul à pouvoir adapter l'information à votre situation personnelle et à répondre à vos questions.
+        Conformément à la législation en vigueur (loi du 4 mars 2002 relative aux droits des malades), vous devez disposer d'une information claire, loyale et appropriée avant toute intervention.
+        Ce document en constitue la trace écrite.
+</div>
+
+<h3>CHAPITRE 1 — COMPRENDRE LA MALADIE DISCALE LOMBAIRE</h3>
+<h4>1.1 Rappel anatomique</h4>
+<p>La colonne vertébrale lombaire est constituée de cinq vertèbres (L1 à L5) reposant sur le sacrum (S1). Entre chaque vertèbre se trouve un <strong>disque intervertébral</strong> qui joue un rôle d'amortisseur et de répartiteur des contraintes mécaniques lors des mouvements quotidiens. Chaque disque est composé de deux parties :</p>
+<ul>
+<li><strong>L'annulus fibrosus (anneau fibreux)</strong> : manchon périphérique résistant et élastique qui maintient la cohésion des vertèbres.</li>
+<li><strong>Le nucleus pulposus (noyau gélatineux)</strong> : partie centrale riche en eau, qui absorbe les pressions et les chocs.</li>
+</ul>
+<p>Les niveaux les plus fréquemment atteints par l'usure sont <strong>L4-L5</strong> et <strong>L5-S1</strong>, car ils supportent les plus fortes contraintes de charge.</p>
+
+<h4>1.2 La discopathie et la douleur lombaire discogénique</h4>
+<p>Le disque intervertébral est normalement très solide et riche en eau. Toutefois, son usure naturelle est inévitable par un phénomène de <strong>déshydratation progressive</strong>. Cette dégénérescence, appelée <strong>discopathie</strong>, ne provoque le plus souvent aucune douleur.</p>
+<p>Cependant, lorsque cette usure s'accélère sous l'effet de traumatismes, de microtraumatismes répétés ou d'un terrain génétique défavorable, une <strong>lombalgie discogénique pure</strong> peut apparaître. Dans ce cas précis, la douleur provient exclusivement de la dégradation du disque lui-même, sans compression directe d'un nerf (contrairement à la sciatique par hernie discale).</p>
+
+<h4>1.3 Pourquoi une prothèse discale plutôt qu'une arthrodèse ?</h4>
+<p>Le traitement chirurgical "historique" de la douleur lombaire discogénique chronique est la <strong>fusion vertébrale (arthrodèse)</strong>, qui supprime définitivement la mobilité du niveau opéré en soudant les vertèbres entre elles.</p>
+<p>La <strong>prothèse discale lombaire</strong> (ou remplacement discal total) est une approche plus moderne. Elle permet, dans des cas rigoureusement sélectionnés, de supprimer la douleur <strong>tout en préservant la mobilité</strong> du segment opéré. L'objectif est de remplacer le disque dégénéré par un implant articulé reproduisant la fonction de pivot et d'amortisseur. Cela permet théoriquement de protéger les disques adjacents (situés au-dessus et en-dessous) d'une usure prématurée causée par le blocage d'une arthrodèse.</p>
+
+<h3>CHAPITRE 2 — LES TRAITEMENTS NON CHIRURGICAUX</h3>
+<p>La chirurgie de prothèse discale n'est envisagée qu'<strong>après échec d'un traitement médical bien conduit durant au moins 6 mois</strong>, sauf situation exceptionnelle.</p>
+
+<h4>2.1 Le traitement médical et la rééducation</h4>
+<ul>
+<li><strong>Traitements médicamenteux</strong> : Antalgiques, anti-inflammatoires non stéroïdiens (AINS) et myorelaxants pour gérer les poussées inflammatoires et les contractures musculaires.</li>
+<li><strong>Immobilisation lombaire</strong> : Port transitoire d'une ceinture lombaire (3 à 5 semaines maximum pour éviter l'amyotrophie).</li>
+<li><strong>Kinésithérapie active</strong> : Indispensable. Elle comprend un renforcement musculaire profond (gainage, stabilisation lombo-pelvienne) et une éducation posturale.</li>
+</ul>
+
+<h4>2.2 Les infiltrations</h4>
+<p>Des infiltrations de corticoïdes (péridurales ou articulaires postérieures) peuvent être réalisées par un spécialiste sous contrôle radiologique pour diminuer l'inflammation locale. Leur efficacité sur une discopathie pure reste toutefois variable.</p>
+
+<h3>CHAPITRE 3 — INDICATIONS ET LE "CANDIDAT IDÉAL"</h3>
+<p>La réussite de cette chirurgie repose sur une sélection extrêmement rigoureuse des patients. La prothèse discale ne s'adresse pas à tous les maux de dos.</p>
+
+<h4>3.1 Le profil idéal pour une prothèse discale</h4>
+<ul>
+<li>Adulte jeune ou d'âge moyen (généralement moins de 60 ans), actif(ve).</li>
+<li>Lombalgie d'origine discogénique <strong>pure</strong> (la douleur vient exclusivement du disque usé).</li>
+<li>Évolution chronique et invalidante depuis plus de 6 mois malgré la rééducation.</li>
+<li>Absence de surcharge pondérale majeure.</li>
+</ul>
+
+<h4>3.2 Les contre-indications formelles</h4>
+<p>Si vous présentez l'un des critères suivants, une <strong>arthrodèse lombaire</strong> sera préférée à la prothèse :</p>
+<ul>
+<li><strong>Arthrose facettaire</strong> : usure des petites articulations à l'arrière des vertèbres (la mobilité retrouvée par la prothèse serait alors douloureuse).</li>
+<li><strong>Ostéoporose</strong> ou os fragile (risque majeur d'enfoncement de la prothèse dans l'os).</li>
+<li><strong>Spondylolisthésis ou instabilité</strong> : si les vertèbres glissent, elles doivent être fixées et non articulées.</li>
+<li>Antécédents de chirurgie abdominale lourde, radiothérapie pelvienne ou infection rachidienne.</li>
+<li>Atteinte sur plus de deux niveaux discaux consécutifs.</li>
+</ul>
+
+<div class="note warn">
+<strong>⚠️ Avertissement Médico-légal (Conversion en arthrodèse) :</strong> 
+Même si votre profil est compatible avec une prothèse discale en pré-opératoire, le chirurgien peut être amené, au cours de l'intervention, à modifier son plan et réaliser une <strong>arthrodèse (fusion)</strong>. Cela peut se produire face à des difficultés anatomiques imprévues, un os jugé trop fragile en direct, ou un risque vasculaire. Cette décision est toujours prise dans l'intérêt de votre sécurité.
+</div>
+
+<h3>CHAPITRE 4 — TECHNIQUE CHIRURGICALE ET BILAN</h3>
+
+<h4>4.1 Bilan préopératoire</h4>
+<p>Outre les radiographies dynamiques et l'IRM lombaire, un examen clé est obligatoire : <strong>l'angioscanner lombaire</strong>. Il permet de cartographier précisément vos vaisseaux sanguins abdominaux afin de planifier le passage sécurisé du chirurgien.</p>
+
+<h4>4.2 L'intervention : la voie d'abord antérieure</h4>
+<p>Contrairement aux chirurgies classiques du dos, la prothèse discale lombaire se pose exclusivement <strong>par l'avant, via une incision sur l'abdomen</strong> (voie d'abord antérieure ou rétro-péritonéale). Cela permet d'atteindre le disque sans toucher aux nerfs du dos.</p>
+<p>Pour accéder à la colonne, il faut écarter délicatement les muscles abdominaux, les organes digestifs et surtout les <strong>gros vaisseaux sanguins</strong> (aorte, veine cave, vaisseaux iliaques). C'est pourquoi l'intervention est le plus souvent réalisée en double équipe, avec la présence d'un <strong>chirurgien vasculaire</strong>.</p>
+
+<h4>4.3 Déroulement de la pose</h4>
+<p>Sous anesthésie générale, le disque usé est entièrement retiré (discectomie totale). Les plateaux vertébraux sont préparés pour accueillir l'implant. La prothèse (composée généralement de plateaux en titane et d'un noyau mobile) est insérée sous contrôle radiographique strict pour garantir un centrage parfait. L'intervention dure entre 1h30 et 2h30.</p>
+
+<h3>CHAPITRE 5 — RÉSULTATS ATTENDUS</h3>
+<p>L'objectif principal est de réduire de façon très significative vos douleurs lombaires pour vous permettre de reprendre une vie active. Les études montrent que la prothèse discale offre des résultats au moins équivalents à l'arthrodèse, avec l'avantage d'une récupération initiale souvent plus rapide et d'une conservation de la souplesse.</p>
+<p><strong>Cependant, la chirurgie du dos n'est jamais magique :</strong> la colonne vertébrale ne redevient pas "neuve" et un fond douloureux mécanique ou une fatigabilité lombaire peuvent persister. Aucun résultat n'est garanti à 100%.</p>
+
+<h3>CHAPITRE 6 — COMPLICATIONS ET RISQUES SPÉCIFIQUES</h3>
+<p>Toute intervention chirurgicale comporte des risques, allant des plus bénins aux plus graves, qu'il est impératif de comprendre avant de donner votre accord.</p>
+
+<h4>6.1 Risques liés à la voie d'abord abdominale (Peropératoires)</h4>
+<ul>
+<li><strong>Lésion vasculaire majeure :</strong> Une blessure de l'aorte, de la veine cave ou des vaisseaux iliaques est rare (0,5 à 2 %) mais constitue une urgence absolue pouvant nécessiter une suture immédiate et une transfusion. C'est la raison de la présence du chirurgien vasculaire.</li>
+<li><strong>Risque sexuel (Éjaculation rétrograde) :</strong> Chez l'homme, lors de l'accès au disque L5-S1, les nerfs sympathiques (plexus pré-sacré) passant devant la vertèbre peuvent être étirés. Cela peut entraîner une "éjaculation rétrograde" (le sperme part dans la vessie au lieu de sortir). Ce trouble est souvent transitoire, mais peut parfois être définitif (moins de 1 % des cas). L'impuissance (trouble de l'érection) est exceptionnelle.</li>
+<li><strong>Atteinte du nerf fémoro-cutané :</strong> Peut causer des engourdissements ou pertes de sensibilité sur la face externe de la cuisse, généralement transitoires.</li>
+<li><strong>Plaie d'un organe abdominal :</strong> Intestin, uretère (très rare).</li>
+</ul>
+
+<h4>6.2 Risques postopératoires précoces</h4>
+<ul>
+<li><strong>Iléus paralytique (transit ralenti) :</strong> Les intestins ayant été manipulés, le transit (gaz et selles) peut mettre 24h à 48h à reprendre. Des ballonnements et nausées sont fréquents les premiers jours.</li>
+<li><strong>Phlébite et embolie pulmonaire :</strong> Prévenus par le lever précoce, des bas de contention, et un traitement anticoagulant si nécessaire.</li>
+<li><strong>Hématome :</strong> Surveillé par la mise en place d'un drain abdominal retiré avant la sortie.</li>
+<li><strong>Infection :</strong> Rare (0,5 à 1 %). Elle peut être superficielle (cicatrice abdominale) ou profonde au niveau de la prothèse (spondylodiscite), nécessitant des antibiotiques voire une réintervention.</li>
+</ul>
+
+<h4>6.3 Risques à long terme spécifiques à la prothèse</h4>
+<ul>
+<li><strong>Subsidence (Enfoncement) :</strong> La prothèse peut s'enfoncer de quelques millimètres dans l'os de la vertèbre, ce qui réduit la hauteur et la mobilité du disque.</li>
+<li><strong>Ossifications hétérotopiques :</strong> Dans 5 à 30 % des cas, le corps réagit en fabriquant de l'os autour de la prothèse. Cet os peut finir par "bloquer" la prothèse, la transformant spontanément en arthrodèse naturelle. C'est rarement douloureux mais cela annule le bénéfice de la mobilité.</li>
+<li><strong>Usure et migration :</strong> Comme toute prothèse articulaire (hanche, genou), les matériaux s'usent lentement avec le temps. Une migration (déplacement) de l'implant est exceptionnelle si le positionnement initial est correct.</li>
+<li><strong>Maladie du segment adjacent :</strong> Bien que la prothèse soit conçue pour limiter ce risque, les disques voisins peuvent tout de même vieillir et devenir douloureux avec les années.</li>
+</ul>
+
+<h3>CHAPITRE 7 — CONVALESCENCE ET REPRISES D'ACTIVITÉS</h3>
+
+<h4>7.1 L'hospitalisation (3 à 5 jours)</h4>
+<p>Le lever avec les kinésithérapeutes se fait généralement le jour même ou le lendemain de l'intervention. L'alimentation reprend progressivement en fonction du retour de votre transit intestinal. Un drain et une sonde urinaire sont souvent en place les premières 24 heures.</p>
+
+<h4>7.2 Les premières semaines à domicile</h4>
+<p>Vous devez marcher tous les jours, de façon progressive. <strong>Position assise :</strong> Il est fortement conseillé de privilégier une <strong>assise haute</strong> (type chaise de bar ou en utilisant des coussins rehausseurs) pendant les 3 premières semaines, afin de ne pas "casser" l'angle entre le bassin et le dos, ce qui mettrait la cicatrice abdominale et la prothèse en tension.</p>
+
+<h4>7.3 Tableau des reprises d'activité indicatives</h4>
+<table>
+<thead>
+<tr><th>Activité</th><th>Délai moyen</th><th>Conditions particulières</th></tr>
+</thead>
+<tbody>
+<tr><td>Marche simple</td><td>Dès J+1</td><td>Quotidienne et progressive</td></tr>
+<tr><td>Position assise basse / canapé</td><td>Après 3 semaines</td><td>Privilégier les assises hautes au début</td></tr>
+<tr><td>Conduite automobile</td><td>3 à 4 semaines</td><td>Si capacité de freinage d'urgence sans douleur</td></tr>
+<tr><td><strong>Arrêt de travail</strong></td><td><strong>6 à 12 semaines</strong></td><td>Selon la pénibilité du poste et les trajets</td></tr>
+<tr><td>Sport doux (natation crawl/dos, vélo d'appartement)</td><td>6 à 8 semaines</td><td>Après accord du chirurgien</td></tr>
+<tr><td>Sports d'impact (course à pied)</td><td>4 à 6 mois</td><td>Progression encadrée</td></tr>
+<tr><td>Sports de contact / pivots</td><td>À partir de 6 mois</td><td>Accord du chirurgien indispensable</td></tr>
+</tbody>
+</table>
+
+<h4>7.4 Signes d'alerte postopératoires</h4>
+<div class="note warn">
+<table style="margin-top:0;">
+<thead>
+<tr><th>Symptôme</th><th>Risque suspecté</th><th>Que faire ?</th></tr>
+</thead>
+<tbody>
+<tr><td>Gonflement rapide et très douloureux du ventre, pâleur, vertiges</td><td>Hématome profond / Saignement</td><td><strong>URGENCE ABSOLUE (Appeler le 15)</strong></td></tr>
+<tr><td>Fièvre &gt; 38°C avec douleurs lombaires croissantes</td><td>Infection (Spondylodiscite)</td><td>Consulter aux Urgences rapidement</td></tr>
+<tr><td>Mollet gonflé, dur et douloureux</td><td>Phlébite</td><td>Consulter rapidement</td></tr>
+<tr><td>Faiblesse soudaine d'une ou deux jambes (lâchage)</td><td>Souffrance neurologique</td><td>Consulter rapidement</td></tr>
+</tbody>
+</table>
+<p style="margin-bottom:0;"><strong>En cas de doute, ne restez jamais seul(e) avec vos symptômes : contactez le secrétariat ou présentez-vous au service des urgences de la clinique.</strong></p>
+</div>
+
+<h3>MES NOTES / QUESTIONS À POSER AU CHIRURGIEN</h3>
+<ul>
+<li>Quelles sont les alternatives si mon os est trop fragile ?</li>
+<li>Quelle est la durée d'usure estimée pour ce modèle de prothèse ?</li>
+<li>Le chirurgien vasculaire sera-t-il présent du début à la fin ?</li>
+<li>Quand pourrai-je reprendre spécifiquement mon activité professionnelle ?</li>
+</ul>
+<p><em>Utilisez cet espace pour noter vos propres questions avant la consultation :</em></p>
+<p>.......................................................................................................................................................</p>
+<p>.......................................................................................................................................................</p>
+<p>.......................................................................................................................................................</p>
+
+<h3>CONSENTEMENT ÉCLAIRÉ</h3>
+<p>J'atteste avoir reçu cette fiche d'information et en avoir pris connaissance. J'ai compris la nature de l'intervention (voie antérieure, prothèse), l'existence d'alternatives (arthrodèse) et la possibilité de conversion en cours d'opération. Les risques, notamment vasculaires et sexuels (pour les hommes), m'ont été clairement expliqués et j'ai pu poser toutes mes questions.</p>
+<p><strong>Fait à :</strong> ..................................................... &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Date :</strong> ____ / ____ / ________</p>
+<p><strong>Nom et prénom du patient :</strong> .........................................................................................</p>
+<p><strong>Mention manuscrite <em>"Lu et compris"</em> :</strong></p>
+<br>
+<p><strong>Signature :</strong></p>
+<br>
+
+<footer>
+<div><strong>Espace Francilien du Rachis</strong> — 95, rue de Prony, 75017 Paris</div>
+<div>Dr Raphaël Jameson : dr.jameson@rachis.paris · Dr Mayalen Lamerain : dr.mlamerain@gmail.com · Dr Christophe Travert : dr.ctravert@gmail.com</div>
+<div><strong>rachis.paris</strong></div>
+</footer>
+</div>
+</div>
+</body>
+</html>
